@@ -90,7 +90,7 @@ const Login = () => {
                     <button
                       className="focus:outline-none"
                       type="button"
-                      onClick={toogleVisibility}
+                      onPress={toogleVisibility}
                     >
                       {isVisible ? (
                         <FaEye className="pointer-events-none text-xl text-default-400" />
