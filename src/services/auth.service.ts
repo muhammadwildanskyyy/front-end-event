@@ -4,12 +4,12 @@ import { IActivation, ILogin, IRegister } from "@/types/Auth";
 
 const authServices = {
   register: (payload: IRegister) =>
-    instance.post(`${endpoint.Auth}/register`, payload),
+    instance.post(`${endpoint.AUTH}/register`, payload),
   activation: (payload: IActivation) =>
-    instance.post(`${endpoint.Auth}/activation`, payload),
-  login: (payload: ILogin) => instance.post(`${endpoint.Auth}/login`, payload),
+    instance.post(`${endpoint.AUTH}/activation`, payload),
+  login: (payload: ILogin) => instance.post(`${endpoint.AUTH}/login`, payload),
   getProfileWithToken: (token: string) =>
-    instance.get(`${endpoint.Auth}/me`, {
+    instance.get(`${endpoint.AUTH}/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
