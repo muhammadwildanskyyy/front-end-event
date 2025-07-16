@@ -19,7 +19,7 @@ interface PropTypes {
   setSelectedId: Dispatch<SetStateAction<string>>;
 }
 
-const DelateCategoryModal = (props: PropTypes) => {
+const DeleteCategoryModal = (props: PropTypes) => {
   const {
     isOpen,
     onOpenChange,
@@ -85,4 +85,4 @@ const DelateCategoryModal = (props: PropTypes) => {
   );
 };
 
-export default DelateCategoryModal;
+export default DeleteCategoryModal;
