@@ -8,6 +8,7 @@ import useChangeUrl from "@/hooks/useChangeUrl";
 import useEvent from "./useEvent";
 import DropdownAction from "@/components/commons/DropdownAction";
 import AddEventModal from "./AddEventModal";
+import DeleteEventModal from "./DeleteEventModal";
 
 const Event = () => {
   const { push, isReady, query } = useRouter();
@@ -89,6 +90,12 @@ const Event = () => {
         />
       )}
       <AddEventModal {...addEventModal} refetchEvents={refetchEvents} />
+      <DeleteEventModal
+        {...deleteEventModal}
+        refetchEvent={refetchEvents}
+        selectedId={selectedId}
+        setSelectedId={setSelectedId}
+      />
     </section>
   );
 };
