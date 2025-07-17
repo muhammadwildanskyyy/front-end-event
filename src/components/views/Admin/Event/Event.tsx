@@ -1,9 +1,5 @@
 import DataTable from "@/components/ui/DataTable";
-import {
-
-  Chip,
-  useDisclosure,
-} from "@nextui-org/react";
+import { Chip, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Key, ReactNode, useCallback, useEffect } from "react";
@@ -11,6 +7,7 @@ import { COLUMN_LISTS_EVENT } from "./Event.constants";
 import useChangeUrl from "@/hooks/useChangeUrl";
 import useEvent from "./useEvent";
 import DropdownAction from "@/components/commons/DropdownAction";
+import AddEventModal from "./AddEventModal";
 
 const Event = () => {
   const { push, isReady, query } = useRouter();
@@ -18,6 +15,7 @@ const Event = () => {
     dataEvents,
     isLoadingEvents,
     isRefetchingEvents,
+    refetchEvents,
 
     selectedId,
     setSelectedId,
@@ -90,6 +88,7 @@ const Event = () => {
           totalPages={dataEvents?.pagination.totalPages}
         />
       )}
+      <AddEventModal {...addEventModal} refetchEvents={refetchEvents} />
     </section>
   );
 };
