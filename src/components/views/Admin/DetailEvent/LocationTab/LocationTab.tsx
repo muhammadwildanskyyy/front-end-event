@@ -5,20 +5,16 @@ import {
   Card,
   CardBody,
   CardHeader,
-  DatePicker,
   Input,
   Select,
   SelectItem,
   Skeleton,
   Spinner,
-  Textarea,
 } from "@nextui-org/react";
 import useLocationTab from "./useLocationTab";
 import { Controller } from "react-hook-form";
 import { useEffect } from "react";
 import { IEventForm, IRegency } from "@/types/Event";
-import { ICategory } from "@/types/Category";
-import { toInputDate } from "@/utils/date";
 
 interface PropTypes {
   dataEvent: IEventForm;

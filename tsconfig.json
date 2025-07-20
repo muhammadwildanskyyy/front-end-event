@@ -27,7 +27,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/components/views/Admin/DetailEvent/TicketTab/DeleteTicketModal"  ],
   "exclude": [
     "node_modules"
   ]
