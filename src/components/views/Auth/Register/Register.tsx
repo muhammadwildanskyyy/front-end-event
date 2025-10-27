@@ -70,7 +70,7 @@ const Register = () => {
               )}
             />
             <Controller
-              name="username"
+              name="userame"
               control={control}
               render={({ field }) => (
                 <Input

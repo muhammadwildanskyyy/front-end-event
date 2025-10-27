@@ -54,13 +54,13 @@ const InfoTab = (props: PropTypes) => {
           className="flex flex-col gap-4"
           onSubmit={handleSubmitUpdateInfo(onUpdate)}
         >
-          <Skeleton isLoaded={!!dataProfile?.username} className="rounded-lg">
+          <Skeleton isLoaded={!!dataProfile?.userName} className="rounded-lg">
             <Input
-              label="Username"
+              label="UserName"
               labelPlacement="outside"
               variant="flat"
               disabled
-              value={dataProfile?.username}
+              value={dataProfile?.userName}
             />
           </Skeleton>
           <Skeleton isLoaded={!!dataProfile?.email} className="rounded-lg">
