@@ -1,5 +1,4 @@
 import { ToasterContext } from "@/contexts/ToasterContext";
-import categoryServices from "@/services/category.service";
 import eventServices from "@/services/event.service";
 import { useMutation } from "@tanstack/react-query";
 import { useContext } from "react";
@@ -13,9 +12,9 @@ const useDeleteEventModal = () => {
   };
 
   const {
-    mutate: mutateDeleteMutateEvent,
+    mutate: mutateDeleteEvent,
     isPending: isPendingMutateDeleteEvent,
-    isSuccess: isSuccessDeleteMutateEvent,
+    isSuccess: isSuccessMutateDeleteEvent,
   } = useMutation({
     mutationFn: deleteEvent,
     onError: (error) => {
@@ -27,15 +26,15 @@ const useDeleteEventModal = () => {
     onSuccess: () => {
       setToaster({
         type: "success",
-        message: "delete Event Success",
+        message: "Delete event success",
       });
     },
   });
 
   return {
-    mutateDeleteMutateEvent,
+    mutateDeleteEvent,
     isPendingMutateDeleteEvent,
-    isSuccessDeleteMutateEvent,
+    isSuccessMutateDeleteEvent,
   };
 };
 

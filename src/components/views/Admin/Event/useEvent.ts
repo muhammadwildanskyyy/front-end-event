@@ -2,18 +2,19 @@ import useChangeUrl from "@/hooks/useChangeUrl";
 import eventServices from "@/services/event.service";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
-import { useState } from "react";
 
 const useEvent = () => {
-  const [selectedId, setSelectedId] = useState<string>("");
   const router = useRouter();
-  const { currentLimit, currentPage, currentSearch } = useChangeUrl();
+  const {
+    currentLimit,
+    currentPage,
+    currentCategory,
+    currentIsFeatured,
+    currentIsOnline,
+  } = useChangeUrl();
 
   const getEvents = async () => {
-    let params = `limit=${currentLimit}&page=${currentPage}`;
-    if (currentSearch) {
-      params += `&search=${currentSearch}`;
-    }
+    let params = `limit=${currentLimit}&page=${currentPage}&isPublish=true&category=${currentCategory}&isFeatured=${currentIsFeatured}&isOnline=${currentIsOnline}`;
     const res = await eventServices.getEvents(params);
     const { data } = res;
     return data;
@@ -25,7 +26,14 @@ const useEvent = () => {
     isRefetching: isRefetchingEvents,
     refetch: refetchEvents,
   } = useQuery({
-    queryKey: ["Events", currentPage, currentLimit, currentSearch],
+    queryKey: [
+      "Events",
+      currentPage,
+      currentLimit,
+      currentCategory,
+      currentIsFeatured,
+      currentIsOnline,
+    ],
     queryFn: () => getEvents(),
     enabled: router.isReady && !!currentPage && !!currentLimit,
   });
@@ -35,9 +43,6 @@ const useEvent = () => {
     isLoadingEvents,
     isRefetchingEvents,
     refetchEvents,
-
-    selectedId,
-    setSelectedId,
   };
 };
 

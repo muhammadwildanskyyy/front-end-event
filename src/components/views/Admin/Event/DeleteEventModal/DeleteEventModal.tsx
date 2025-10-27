@@ -7,14 +7,14 @@ import {
   ModalHeader,
   Spinner,
 } from "@nextui-org/react";
-import React, { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import useDeleteEventModal from "./useDeleteEventModal";
 
 interface PropTypes {
   isOpen: boolean;
   onClose: () => void;
   onOpenChange: () => void;
-  refetchEvent: () => void;
+  refetchEvents: () => void;
   selectedId: string;
   setSelectedId: Dispatch<SetStateAction<string>>;
 }
@@ -22,25 +22,27 @@ interface PropTypes {
 const DeleteEventModal = (props: PropTypes) => {
   const {
     isOpen,
-    onOpenChange,
     onClose,
-    refetchEvent,
+    onOpenChange,
     selectedId,
     setSelectedId,
+    refetchEvents,
   } = props;
 
   const {
-    mutateDeleteMutateEvent,
+    mutateDeleteEvent,
     isPendingMutateDeleteEvent,
-    isSuccessDeleteMutateEvent,
+    isSuccessMutateDeleteEvent,
   } = useDeleteEventModal();
 
   useEffect(() => {
-    if (isSuccessDeleteMutateEvent) {
+    if (isSuccessMutateDeleteEvent) {
       onClose();
-      refetchEvent();
+      refetchEvents();
+      setSelectedId("");
     }
-  }, [isSuccessDeleteMutateEvent]);
+  }, [isSuccessMutateDeleteEvent]);
+
   return (
     <Modal
       onOpenChange={onOpenChange}
@@ -49,10 +51,10 @@ const DeleteEventModal = (props: PropTypes) => {
       scrollBehavior="inside"
     >
       <ModalContent className="m-4">
-        <ModalHeader>Delete event</ModalHeader>
+        <ModalHeader>Delete Event</ModalHeader>
         <ModalBody>
           <p className="text-medium">
-            Are you sure you want do delete this event
+            Are you sure you want to delete this event?
           </p>
         </ModalBody>
         <ModalFooter>
@@ -60,7 +62,7 @@ const DeleteEventModal = (props: PropTypes) => {
             color="danger"
             variant="flat"
             onPress={() => {
-              onClose;
+              onClose();
               setSelectedId("");
             }}
             disabled={isPendingMutateDeleteEvent}
@@ -71,7 +73,7 @@ const DeleteEventModal = (props: PropTypes) => {
             color="danger"
             type="submit"
             disabled={isPendingMutateDeleteEvent}
-            onPress={() => mutateDeleteMutateEvent(selectedId)}
+            onPress={() => mutateDeleteEvent(selectedId)}
           >
             {isPendingMutateDeleteEvent ? (
               <Spinner size="sm" color="white" />

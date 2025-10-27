@@ -3,18 +3,19 @@ import { JWT } from "next-auth/jwt";
 
 interface IRegister {
   fullName: string;
-  userName: string;
+  username: string;
   email: string;
   password: string;
   confirmPassword: string;
-}
-interface IActivation {
-  code: string;
 }
 
 interface ILogin {
   identifier: string;
   password: string;
+}
+
+interface IActivation {
+  code: string;
 }
 
 interface UserExtended extends User {
@@ -27,14 +28,32 @@ interface SessionExtended extends Session {
 }
 
 interface JWTExtended extends JWT {
-  user?: userExtended;
+  user?: UserExtended;
+}
+
+interface IProfile {
+  _id?: string;
+  email?: string;
+  fullName?: string;
+  isActive?: boolean;
+  profilePicture?: string | FileList;
+  role?: string;
+  username?: string;
+}
+
+interface IUpdatePassword {
+  oldPassword: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export type {
   IRegister,
   IActivation,
-  UserExtended,
-  SessionExtended,
   JWTExtended,
+  SessionExtended,
+  UserExtended,
   ILogin,
+  IProfile,
+  IUpdatePassword,
 };

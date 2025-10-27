@@ -16,7 +16,6 @@ const Register = () => {
     isPendingRegister,
     errors,
   } = useRegister();
-
   return (
     <div className="flex w-full flex-col items-center justify-center gap-10 lg:flex-row lg:gap-20">
       <div className="flex w-full flex-col items-center justify-center gap-10 lg:w-1/3">
@@ -71,17 +70,17 @@ const Register = () => {
               )}
             />
             <Controller
-              name="userName"
+              name="username"
               control={control}
               render={({ field }) => (
                 <Input
                   {...field}
                   type="text"
-                  label="userName"
+                  label="Username"
                   variant="bordered"
                   autoComplete="off"
-                  isInvalid={errors.userName !== undefined}
-                  errorMessage={errors.userName?.message}
+                  isInvalid={errors.username !== undefined}
+                  errorMessage={errors.username?.message}
                 />
               )}
             />
