@@ -10,7 +10,7 @@ import { ToasterContext } from "@/contexts/ToasterContext";
 
 const registerSchema = yup.object().shape({
   fullName: yup.string().required("Please input your fullname"),
-  username: yup.string().required("Please input your username"),
+  userName: yup.string().required("Please input your username"),
   email: yup
     .string()
     .email("Email format not valid")

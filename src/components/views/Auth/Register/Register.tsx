@@ -70,17 +70,17 @@ const Register = () => {
               )}
             />
             <Controller
-              name="userame"
+              name="userName"
               control={control}
               render={({ field }) => (
                 <Input
                   {...field}
                   type="text"
-                  label="Username"
+                  label="UserName"
                   variant="bordered"
                   autoComplete="off"
-                  isInvalid={errors.username !== undefined}
-                  errorMessage={errors.username?.message}
+                  isInvalid={errors.userName !== undefined}
+                  errorMessage={errors.userName?.message}
                 />
               )}
             />
